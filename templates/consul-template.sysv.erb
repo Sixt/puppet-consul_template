@@ -36,7 +36,7 @@ case "$1" in
         echo "$NAME already running"
     else
         echo "Starting $NAME"
-        CONSUL_TEMPLATE_LOG=${LOGLEVEL} $CMD >> "$LOGFILE" 2>&1 &
+        $CMD >> "$LOGFILE" 2>&1 &
         echo $! > "$PIDFILE"
         if ! is_running; then
             echo "Unable to start $NAME, see $LOGFILE"
